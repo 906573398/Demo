@@ -1,4 +1,5 @@
 ;(function($){
+
 	var defaults = {
 		form:{name:'inForm'},
 		text:{name:'inText',ratio:false,hover:'hover',focus:'focus',disabled:'disabled',readonly:'readonly'},
@@ -8,6 +9,7 @@
 		button:{name:'inButton',ratio:false,hover:'hover',focus:'focus',disabled:'disabled'},
 		textarea:{name:'inTextarea',ratio:false,hover:'hover',focus:'focus',disabled:'disabled',readonly:'readonly'}
 	};
+	id = "";
 	var supportPlaceholder = 'placeholder' in document.createElement('input');
 	var GetBox = function(element, params){
 		if(element.prop('id')) {
@@ -56,6 +58,7 @@
 			if(!wrap.is('label') || (wrap.is('label') && wrap.find('input'))) {
 				wrap = element.parent();
 				if(!wrap.is('label')) {
+				
 					if(id) {
 						wrap = form.find('label[for="'+id+'"]');
 						if(wrap.length<1){
@@ -437,4 +440,8 @@
 			}
 		});
 	}
+
+
+		
+	
 })(jQuery);

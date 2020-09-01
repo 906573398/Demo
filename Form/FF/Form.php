@@ -123,4 +123,20 @@ class FormBuilder
         return $str;
         # code...
     }
+
+    public  static function images($name = "", $value = "", $option = [])
+    {
+        $str  = ' <div class="case">';
+        $str .= '   <div class="upload" action="upload.html" data-value="' . $value . '"  id="case3" ' . self::attrProperty($option) . '></div>';
+        $str .= '   </div>';
+        return $str;
+        # code...
+    }
+
+    public static function  selectPage($name = "", $value = "", $option = [])
+    {
+        $str = '<input type="text" name="row[' . $name . ']" value="' . $value . '"  ' . self::attrProperty($option) . '  id="selectPage" style="width: 500px;">';
+        return $str;
+        # code...
+    }
 }
