@@ -175,7 +175,7 @@ $list  = [['id' => 1, 'name' => '芝加哥公牛', 'desc' => 1], ['id' => 2, 'na
 		$('.btn').click(function() {
 
 
-			$('#selectPage_text').remove(); //implode
+			// $('#selectPage_text').remove(); //implode
 			let d = {};
 			let t = $('form').serializeArray();
 			$.each(t, function() {
