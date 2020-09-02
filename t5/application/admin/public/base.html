@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{block name="title"}标题{/block}</title>
+    <link rel="stylesheet" href="__STATIC__/css/bootstrap.min.css">
+
+    <script src="__STATIC__/js/jquery.js?id=1"></script>
+    <script src="__STATIC__/js/bootstrap.min.js"></script>
+    <script src="__STATIC__/js/method.js"></script>
+
+</head>
+<style>
+    .dd {
+        color: red;
+    }
+
+    .form-control {
+        width: 40%;
+        display: inline-block;
+    }
+</style>
+
+<body>
+    <!-- echo __STATIC__/css/bootstrap.min.css; -->
+    <html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>{block name="title"}标题{/block}</title>
+    </head>
+
+    <body>
+        <!-- {block name="menu"}{/block} -->
+
+        {block name="left"}{/block}
+
+
+        {block name="main"}主内容{/block}
+        <!-- {block name="right"}主内容1{/block} -->
+        <!-- {block name="footer"}底部{/block} -->
+
+
+    </body>
+
+    </html>
+
+
+</body>
+
+</html>

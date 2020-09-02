@@ -1,0 +1,38 @@
+{extend name="../public/base" /}
+
+{block name="main"}
+<div>
+
+    <button type="button" class="btn btn-primary" style="margin: 10%;" data-url="{:url('Kdniao/demo')}">添加表格</button>
+
+
+    <input id="btn2" type="file" style="display:none">
+    <!-- <input id="upload" type="button" value="单个上传" onclick="Upload()" /> -->
+
+</div>
+
+<script>
+    $('.btn').click(function () {
+        let url = $('.btn').attr('data-url');
+        $('#btn2').click().change(function (e) {
+            var data = $("#btn2")[0].files[0];
+            var fd = new FormData();
+            fd.append("file", data);
+            $.ajax({
+                url: url,
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: fd,
+                success: function (data) {
+                    alert(data);
+                }
+            })
+        })
+    })
+
+</script>
+{/block}
+
+
+{/extend}

@@ -1,0 +1,63 @@
+{extend name="../public/base" /}
+
+{block name="main"}
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-8">
+
+
+
+      <form role="form">
+
+        <div class="form-group">
+          <label for="name">选择主表</label>
+          <select class="form-control" name="db_name">
+            {foreach name="new_select" item="vo" key="k" }
+            <option data-name="{$k}">{$vo}</option>
+            {/foreach}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="name">模型名称</label>
+          <input type="text" name="model_name" class="form-control" placeholder="文本输入" id='model'>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" > 全局模式
+
+          </label>
+        </div>
+
+        <div type="button" class="btn btn-info btn-form" data-url="{:url('Index/makemodel')}">生成模板</div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+  $(document).ready(function () {
+
+    $('.form-control').change(function () {
+      let v = $(this).find('option:selected').attr('data-name');
+      $('#model').val(v);
+    })
+
+
+
+
+  })
+
+
+</script>
+{/block}
+
+
+
+{/extend}
