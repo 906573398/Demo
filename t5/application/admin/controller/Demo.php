@@ -16,8 +16,17 @@ require  EXTEND_PATH . "Form.php";
 class Demo extends Backend
 
 {
+
+
+
     public function index()
     {
+        if (Request::instance()->isAjax()){
+                return $this->row;
+        }
+
+
+
         return $this->fetch();
         # code...
     }

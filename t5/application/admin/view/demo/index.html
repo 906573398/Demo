@@ -6,9 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<script src="/static/js/jquery.js"></script>
-	<script src="/static/admin/js/jQuery.upload.min.js"></script>
+	<script src="/static/admin/js/jQuery.upload.js?id=2"></script>
 	<link rel="stylesheet" href="/static/admin/css/upload.css">
-	<link rel="stylesheet" href="/static/admin/css/btn.css">
+	<link rel="stylesheet" href="/static/admin/css/btn.css?id=1">
 	<script type="text/javascript" src="/static/admin/js/jquery.form.js?id=2"></script>
 	<script type="text/javascript" src="/static/admin/js/EZView.js?id=1"></script>
 	<script type="text/javascript" src="/static/admin/js/draggable.js?id=1"></script>
@@ -16,7 +16,9 @@
 	<link rel="stylesheet" href="/static/admin/SelectPage/selectpage.css" type="text/css">
 	<script type="text/javascript" src="/static/admin/SelectPage/selectpage.min.js?id=4"></script>
 
+	<script type="text/javascript" src="/static/admin/js/xm-select.js"></script>
 
+	<script type="text/javascript" src="/static/admin/js/form.js?id=2"></script>
 
 </head>
 
@@ -37,7 +39,7 @@
 
 
 	<div class="form">
-		<form action="" method="get">
+		<form action="" method="post" id='myForm'>
 
 			<div class="item">
 				<span>用户名1：</span>
@@ -96,15 +98,17 @@
 
 			<div class="item">
 				<span>备　注：</span>
-
-				<?= \form\FormBuilder::images('images', "", ['data-type' => 'jpg,png,mp4','data-num'=>50]) ?>
+				<!-- 图片name字段名为data-name -->
+				<?= \form\FormBuilder::images('images', "", ['data-type' => 'jpg,png,mp4','data-num'=>50,'data-name'=>'row[img]']) ?>
 			</div>
 
 
 
 			<div class="container">
-				<button type="button" class='btn'>提交</button>
+				<!-- <button type="button" class='btn' data-url="{:url('admin/demo/demo')}">提交</button> -->
 
+				<input type="submit" id='url' class="button" style="vertical-align:middle"
+					data-url="{:url('admin/demo/index')}">
 			</div>
 
 		</form>
@@ -119,6 +123,35 @@
 
 <script>
 	$(function () {
+
+
+
+
+
+		// wait for the DOM to be loaded
+		$(document).ready(function () {
+			var options = {
+				url: $('#url').attr('data-url'),
+				beforeSubmit: function (arr, $form, options) {
+
+
+
+
+
+				},
+				success: function (data) {
+					console.log(data);
+				},
+
+			};
+
+			$('#myForm').ajaxForm(options);
+
+
+
+
+		});
+
 
 		url = "{:url('admin/demo/select')}";
 		var tag_datas = {};
@@ -167,41 +200,46 @@
 			}
 		)
 
-		$('.btn').click(function () {
-
-
-			$('#selectPage_text').remove(); //implode
-			let d = {};
-			let t = $('form').serializeArray();
-			$.each(t, function () {
-
-				var str = "";
-				d[this.name] = this.value;
-				if (this.name == 'row[checkbox]') {
-
-					$("input[name='row[checkbox]']:checked").each(function (index, item) {
-						if ($("input[name='row[checkbox]']:checked").length - 1 == index) {
-							str += $(this).val();
-						} else {
-							str += $(this).val() + ",";
-						}
-					});
-
-					d['row[checkbox]'] = str;
-					// 	if(d['row[selectPage]_text'] == "row[selectPage]_text" ){
-					// 	delete d['row[selectPage]_text'];
-					// }
-
-
-				}
 
 
 
 
-			})
 
-			console.log(d);
-		})
+		/*	$('.btn').click(function () {
+	
+	
+				// $('#selectPage_text').remove(); //implode
+				let d = {};
+				let t = $('form').serializeArray();
+				$.each(t, function () {
+	
+					var str = "";
+					d[this.name] = this.value;
+					if (this.name == 'row[checkbox]') {
+	
+						$("input[name='row[checkbox]']:checked").each(function (index, item) {
+							if ($("input[name='row[checkbox]']:checked").length - 1 == index) {
+								str += $(this).val();
+							} else {
+								str += $(this).val() + ",";
+							}
+						});
+	
+						d['row[checkbox]'] = str;
+						// 	if(d['row[selectPage]_text'] == "row[selectPage]_text" ){
+						// 	delete d['row[selectPage]_text'];
+						// }
+	
+	
+					}
+	
+	
+	
+	
+				})
+	
+				console.log(d);
+			})*/
 
 	})
 </script>

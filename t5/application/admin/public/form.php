@@ -66,9 +66,9 @@ class FormBuilder
             foreach ($arr as $k => $v) {
 
                 if (in_array($k, $value)) {
-                    $str .= '<label><input type="checkbox"  checked   ' . self::attrProperty($option) . ' name=row[' . $name . '] value=' . $k .   '>' . $v . '</lable>&nbsp;&nbsp;';
+                    $str .= '<label><input type="checkbox"  checked   ' . self::attrProperty($option) . ' name=row[' . $name . '][] value=' . $k .   '>' . $v . '</lable>&nbsp;&nbsp;';
                 } else {
-                    $str .= '<label><input type="checkbox"    ' . self::attrProperty($option) . '  name=row[' . $name . '] value=' . $k    .   '>' . $v . '</lable>&nbsp;&nbsp;';
+                    $str .= '<label><input type="checkbox"    ' . self::attrProperty($option) . '  name=row[' . $name . '][] value=' . $k    .   '>' . $v . '</lable>&nbsp;&nbsp;';
                 }
             }
         }
